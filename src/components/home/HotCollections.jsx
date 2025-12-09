@@ -68,7 +68,7 @@ const settings = {
           </div>
         </div>
 
-        {/* Carousel */}
+      
         {collections.length === 0 ? (
           <p>Loading...</p>
         ) : (
