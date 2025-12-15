@@ -422,10 +422,6 @@ header.transparent #mainmenu a span,
     border-top-color: var(--secondary-color);
 }
 
-button.slick-arrow.slick-prev:before,
-button.slick-arrow.slick-next:before {
-    color: purple
-}
 
 @media only screen and (max-width: 992px) {
     .table-pricing tbody tr th {

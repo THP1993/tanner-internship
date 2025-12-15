@@ -39,7 +39,115 @@ const ItemDetails = () => {
           <div id="top"></div>
           <section aria-label="section" className="mt90 sm-mt-0">
             <div className="container">
-              <p>Loading...</p>
+              <div className="row">
+                <div className="col-md-6 text-center">
+                  <div
+                    className="skeleton-box"
+                    style={{
+                      width: "100%",
+                      paddingBottom: "100%",
+                      borderRadius: "20px",
+                      display: "block",
+                    }}
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <div className="item_info">
+                    {/* title */}
+                    <div
+                      className="skeleton-box"
+                      style={{
+                        width: "60%",
+                        height: "32px",
+                        marginBottom: "16px",
+                      }}
+                    />
+
+                    <div
+                      className="item_info_counts"
+                      style={{ marginBottom: 16 }}
+                    >
+                      <div
+                        className="skeleton-box"
+                        style={{
+                          width: "80px",
+                          height: "16px",
+                          marginRight: "12px",
+                        }}
+                      />
+                      <div
+                        className="skeleton-box"
+                        style={{ width: "80px", height: "16px" }}
+                      />
+                    </div>
+
+                    <div
+                      className="skeleton-box"
+                      style={{
+                        width: "100%",
+                        height: "12px",
+                        marginBottom: "8px",
+                      }}
+                    />
+                    <div
+                      className="skeleton-box"
+                      style={{
+                        width: "90%",
+                        height: "12px",
+                        marginBottom: "8px",
+                      }}
+                    />
+                    <div
+                      className="skeleton-box"
+                      style={{ width: "80%", height: "12px" }}
+                    />
+
+                    <div className="d-flex flex-row mt-4">
+                      <div className="mr40 d-flex align-items-center">
+                        <div
+                          className="skeleton-box"
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            borderRadius: "50%",
+                            marginRight: "12px",
+                          }}
+                        />
+                        <div>
+                          <div
+                            className="skeleton-box"
+                            style={{
+                              width: "120px",
+                              height: "14px",
+                              marginBottom: "6px",
+                            }}
+                          />
+                          <div
+                            className="skeleton-box"
+                            style={{ width: "80px", height: "12px" }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-4">
+                      <div
+                        className="skeleton-box"
+                        style={{
+                          width: "140px",
+                          height: "16px",
+                          marginBottom: "8px",
+                        }}
+                      />
+                      <div
+                        className="skeleton-box"
+                        style={{ width: "100px", height: "20px" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </div>

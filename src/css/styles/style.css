@@ -14406,6 +14406,17 @@ a.read_more i {
   animation: ripple 0.7s linear infinite;
 }
 
+/* slick slider arrows color override */
+
+button.slick-arrow.slick-prev:before,
+button.slick-arrow.slick-next:before {
+    color: purple
+}
+
+/*skeleton ripple effect*/
+
+
+
 @-webkit-keyframes ripple {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3),
@@ -16507,6 +16518,9 @@ img {
     top: 22.5%;
   }
 }
+
+
+
 
 /* -------------------------------------------------- 
     design for 480px
