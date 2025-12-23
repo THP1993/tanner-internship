@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
@@ -9,10 +9,32 @@ const NewItems = () => {
 
   const [now, setNow] = useState(() => Date.now());
 
-  useEffect(() => {
-    const t = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(t);
-  }, []);
+  const cancelIdRef = useRef(null);
+  const startTimeRef = useRef(null);
+
+useEffect(() => {
+  
+  let lastTick = 0;
+
+  const updateNow = (t) => {
+    // throttle to ~1 update per second (better performance than every frame)
+    if (!lastTick || t - lastTick >= 1000) {
+      lastTick = t;
+      setNow(Date.now());
+    }
+
+    cancelIdRef.current = requestAnimationFrame(updateNow);
+  };
+
+  cancelIdRef.current = requestAnimationFrame(updateNow);
+
+  return () => {
+    if (cancelIdRef.current) {
+      cancelAnimationFrame(cancelIdRef.current);
+      cancelIdRef.current = null;
+    }
+  };
+}, []);
 
   const settings = useMemo(
     () => ({
