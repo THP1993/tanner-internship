@@ -5,6 +5,7 @@ import Slider from "react-slick";
 
 const HotCollections = () => {
 const [collections, setCollections] = useState([]);
+const [loading, setLoading] = useState(true);
 
 useEffect (() => {
   const fetchCollections = async () => {
@@ -15,6 +16,8 @@ useEffect (() => {
       setCollections(data);
     } catch (error) {
       console.error("Error fetching hot collections:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,7 +61,7 @@ const settings = {
   return (
     <section id="section-collections" className="no-bottom">
       <div className="container">
-        {/* Section title */}
+       
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -69,46 +72,96 @@ const settings = {
         </div>
 
       
-        {collections.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          <Slider {...settings} className="hot-collections-slider">
-            {collections.map((item, index) => (
-              <div key={index} className="px-2">
-                {/* Each slide */}
-                <div className="nft_coll">
-                  <div className="nft_wrap">
-                    <Link to={`/item-details/${item.nftId}`}>
-                      <img
-                        src={item.nftImage}
-                        className="lazy img-fluid"
-                        alt={item.title}
-                      />
-                    </Link>
-                  </div>
+        {loading ? (
+  <Slider {...settings} className="hot-collections-slider">
+    {Array.from({ length: 4 }).map((_, index) => (
+      <div key={index} className="px-2">
+        <div className="nft_coll">
+          <div className="nft_wrap">
+            
+            <div
+              className="skeleton-box"
+              style={{
+                width: "100%",
+                paddingBottom: "100%", 
+                borderRadius: "10px",
+                display: "block",
+              }}
+            />
+          </div>
 
-                  <div className="nft_coll_pp">
-                    <Link to={`/item-details/${item.nftId}`}>
-                      <img
-                        className="lazy pp-coll"
-                        src={item.nftImage}
-                        alt={item.author}
-                      />
-                    </Link>
-                    <i className="fa fa-check"></i>
-                  </div>
+          <div className="nft_coll_pp">
+          
+            <div
+              className="skeleton-box"
+              style={{
+                width: "60px",
+                height: "60px",
+                borderRadius: "50%",
+              }}
+            />
+          </div>
 
-                  <div className="nft_coll_info">
-                    <Link to={`/item-details/${item.nftId}`}>
-                      <h4>{item.title}</h4>
-                    </Link>
-                    <span>{item.code}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        )}
+          <div className="nft_coll_info">
+         
+            <div
+              className="skeleton-box"
+              style={{
+                width: "70%",
+                height: "16px",
+                marginBottom: "10px",
+              }}
+            />
+          
+            <div
+              className="skeleton-box"
+              style={{
+                width: "40%",
+                height: "14px",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    ))}
+  </Slider>
+) : (
+  <Slider {...settings} className="hot-collections-slider">
+    {collections.map((item, index) => (
+      <div key={index} className="px-2">
+        <div className="nft_coll">
+          <div className="nft_wrap">
+            <Link to={`/item-details/${item.nftId}`}>
+              <img
+                src={item.nftImage}
+                className="lazy img-fluid"
+                alt={item.title}
+              />
+            </Link>
+          </div>
+
+          <div className="nft_coll_pp">
+            <Link to={`/item-details/${item.nftId}`}>
+              <img
+                className="lazy pp-coll"
+                src={item.nftImage}
+                alt={item.author}
+              />
+            </Link>
+            <i className="fa fa-check" />
+          </div>
+
+          <div className="nft_coll_info">
+            <Link to={`/item-details/${item.nftId}`}>
+              <h4>{item.title}</h4>
+            </Link>
+            <span>{item.code}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </Slider>
+)}
       </div>
     </section>
   );
