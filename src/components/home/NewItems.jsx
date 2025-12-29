@@ -10,14 +10,14 @@ const NewItems = () => {
   const [now, setNow] = useState(() => Date.now());
 
   const cancelIdRef = useRef(null);
-  const startTimeRef = useRef(null);
+  
 
 useEffect(() => {
   
   let lastTick = 0;
 
   const updateNow = (t) => {
-    // throttle to ~1 update per second (better performance than every frame)
+
     if (!lastTick || t - lastTick >= 1000) {
       lastTick = t;
       setNow(Date.now());
