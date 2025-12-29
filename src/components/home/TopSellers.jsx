@@ -38,7 +38,39 @@ const TopSellers = () => {
 
           <div className="col-md-12">
             {loading ? (
-              <div>Loading Top Sellers...</div>
+              <ol className="author_list">
+                {new Array(12).fill(0).map((_, index) => (
+                  <li key={index}>
+                    <div className="author_list_pp">
+                      <span
+                        className="skeleton-box"
+                        style={{
+                          width: 50,
+                          height: 50,
+                          borderRadius: "50%",
+                          display: "block",
+                        }}
+                      />
+                    </div>
+
+                    <div className="author_list_info">
+                      <span
+                        className="skeleton-box"
+                        style={{ width: 120, height: 14, display: "block" }}
+                      />
+                      <span
+                        className="skeleton-box"
+                        style={{
+                          width: 60,
+                          height: 12,
+                          display: "block",
+                          marginTop: 8,
+                        }}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ol>
             ) : (
               <ol className="author_list">
                 {items.map((item) => (
@@ -53,6 +85,7 @@ const TopSellers = () => {
                         <i className="fa fa-check"></i>
                       </Link>
                     </div>
+
                     <div className="author_list_info">
                       <Link to={`/author/${item.authorId}`}>
                         {item.authorName}
